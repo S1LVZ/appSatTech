@@ -1,0 +1,40 @@
+@model appSatTech.Models.Tecnico
+
+@{
+    ViewData["Title"] = "Delete Técnico";
+}
+
+<div class="page-heading"><div><h1>Excluir técnico</h1><p>Confirme a exclusão deste registro.</p></div></div>
+<div class="danger-card">
+    <div class="danger-icon">!</div>
+    <h3>Excluir este registro?</h3>
+    <p class="text-muted">Esta ação não poderá ser desfeita.</p>
+    <h4>Tecnico</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RegistroTecnico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegistroTecnico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Especialidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Especialidade)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Codigo" />
+        <input type="submit" value="Excluir definitivamente" class="btn btn-danger" />
+        <a asp-action="Index">Voltar para lista</a>
+    </form>
+</div>

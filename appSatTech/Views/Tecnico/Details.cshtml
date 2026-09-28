@@ -1,0 +1,35 @@
+@model appSatTech.Models.Tecnico
+
+@{
+    ViewData["Title"] = "Details Técnico";
+}
+
+<div class="page-heading"><div><h1>Detalhes técnico</h1><p>Confira as informações cadastradas.</p></div></div>
+<div class="details-card">
+    <h4>Tecnico</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.RegistroTecnico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.RegistroTecnico)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Especialidade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Especialidade)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Codigo">Editar</a> |
+    <a asp-action="Index">Voltar para lista</a>
+</div>

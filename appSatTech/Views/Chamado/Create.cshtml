@@ -1,0 +1,61 @@
+@* Define o tipo de modelo fortemente tipado esperado por esta View *@
+@model appSatTech.Models.Chamado
+
+@{
+    // Define o título da página no layout compartilhado (_Layout.cshtml)
+    ViewData["Title"] = "Criar Chamado";
+}
+
+<div class="page-heading"><div><h1>Novo chamado</h1><p>Preencha os dados para cadastrar.</p></div></div>
+
+<div class="form-card">
+    <div class="col-lg-8">
+        @* Formulário configurado via Tag Helper para enviar os dados via POST para a Action 'Create' do Controller atual *@
+        <form asp-action="Create">
+
+            @* Exibe mensagens de erro globais referentes ao Model (não vinculadas a um campo específico) *@
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @* Campo para entrada da Data e Hora do chamado *@
+            <div class="form-group mb-3">
+                @* Rótulo (label) gerado automaticamente com base nos atributos do Model (ex: [DisplayName]) *@
+                <label asp-for="DataHora" class="control-label"></label>
+                @* Input gerado com o tipo correto (ex: datetime-local) e vinculado à propriedade DataHora *@
+                <input asp-for="DataHora" class="form-control" />
+                @* Exibe a mensagem de validação de erro específica para o campo DataHora *@
+                <span asp-validation-for="DataHora" class="text-danger"></span>
+            </div>
+
+            @* Campo de seleção (dropdown) para o Status do chamado *@
+            <div class="form-group mb-3">
+                <label asp-for="StatusAtendimento" class="control-label"></label>
+                <select asp-for="StatusAtendimento" class="form-control">
+                    <option value="">-- Selecione o Status --</option>
+                    <option value="Agendada">Agendada</option>
+                    <option value="Realizada">Realizada</option>
+                    <option value="Cancelada">Cancelada</option>
+                </select>
+                <span asp-validation-for="StatusAtendimento" class="text-danger"></span>
+            </div>
+
+            @* Campo de seleção (dropdown) para o Técnico responsável *@
+            <div class="form-group mb-3">
+                @* Sobrescreve o rótulo padrão exibindo a string 'Técnico' *@
+                <label asp-for="TecnicoId" class="control-label">Técnico</label>
+                @* Popula as opções do select dinamicamente usando a SelectList enviada pela Controller através da ViewBag *@
+                <select asp-for="TecnicoId" class="form-control" asp-items="ViewBag.TecnicoId">
+                    <option value="">-- Selecione o Técnico --</option>
+                </select>
+                <span asp-validation-for="TecnicoId" class="text-danger"></span>
+            </div>
+
+            @* Botões de ação do formulário *@
+            <div class="form-group mt-3">
+                @* Botão que envia a requisição POST *@
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+                @* Link que redireciona o usuário de volta para a Action 'Index' (listagem de chamados) *@
+                <a asp-action="Index" class="btn btn-secondary">Voltar</a>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+@{
+    ViewData["Title"] = "Início";
+}
+
+<section class="hero">
+    <div class="eyebrow">Central de suporte · appSatTech</div>
+    <h1>Suporte técnico mais simples, rápido e organizado.</h1>
+    <p>Gerencie clientes, técnicos e chamados em um só lugar. Uma experiência criada para deixar a rotina de atendimento mais clara e intuitiva.</p>
+    @if (User.Identity?.IsAuthenticated == true)
+    {
+        <a asp-controller="Chamado" asp-action="Create" class="btn btn-light px-4">＋ Abrir novo chamado</a>
+    }
+    else
+    {
+        <a asp-controller="Account" asp-action="Login" class="btn btn-light px-4">Acessar plataforma</a>
+    }
+</section>
+
+<div class="quick-grid">
+    <a class="quick-card" asp-controller="Chamado" asp-action="Index">
+        <div class="quick-icon">CH</div>
+        <h3>Chamados</h3>
+        <p>Acompanhe, crie e organize solicitações de suporte.</p>
+    </a>
+    <a class="quick-card" asp-controller="Cliente" asp-action="Index">
+        <div class="quick-icon">CL</div>
+        <h3>Clientes</h3>
+        <p>Consulte e mantenha os dados dos clientes sempre atualizados.</p>
+    </a>
+    <a class="quick-card" asp-controller="Tecnico" asp-action="Index">
+        <div class="quick-icon">TC</div>
+        <h3>Técnicos</h3>
+        <p>Visualize profissionais e suas respectivas especialidades.</p>
+    </a>
+</div>

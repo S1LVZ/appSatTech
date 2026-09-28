@@ -1,0 +1,39 @@
+@model appSatTech.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Acesso ao sistema";
+}
+
+<div class="login-shell">
+    <div class="login-card">
+        <div class="login-top">
+            <div class="brand-mark">ST</div>
+            <h1>Bem-vindo ao appSatTech</h1>
+            <p>Entre para acessar sua central de suporte.</p>
+        </div>
+        <div class="login-body">
+            <form asp-action="Login" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="form-group">
+                    <label asp-for="Cpf" class="form-label">CPF</label>
+                    <input asp-for="Cpf" class="form-control" placeholder="000.000.000-00" autocomplete="username" />
+                    <span asp-validation-for="Cpf" class="text-danger"></span>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button type="submit" class="btn btn-primary-custom py-2">Entrar na plataforma</button>
+                </div>
+            </form>
+
+            <div class="text-center mt-4">
+                <span class="text-muted small">Ainda não possui cadastro?</span><br />
+                <a asp-controller="Cliente" asp-action="Create" class="fw-bold small">Criar minha conta</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

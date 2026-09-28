@@ -1,0 +1,40 @@
+@model appSatTech.Models.Tecnico
+
+@{
+    ViewData["Title"] = "Create Técnico";
+}
+
+<div class="page-heading"><div><h1>Novo técnico</h1><p>Preencha os dados para cadastrar.</p></div></div>
+<div class="form-card">
+    <div class="col-lg-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nome" class="control-label"></label>
+                <input asp-for="Nome" class="form-control" />
+                <span asp-validation-for="Nome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RegistroTecnico" class="control-label"></label>
+                <input asp-for="RegistroTecnico" class="form-control" />
+                <span asp-validation-for="RegistroTecnico" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Especialidade" class="control-label"></label>
+                <input asp-for="Especialidade" class="form-control" />
+                <span asp-validation-for="Especialidade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Cadastrar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,35 @@
+@model IEnumerable<appSatTech.Models.Tecnico>
+@{
+    ViewData["Title"] = "Técnicos";
+}
+<div class="page-heading">
+    <div>
+        <h1>Técnicos</h1>
+        <p>Gerencie a equipe responsável pelos atendimentos.</p>
+    </div>
+    <a asp-action="Create" class="btn btn-primary">＋ Novo técnico</a>
+</div>
+<div class="table-card">
+    <table class="table">
+        <thead><tr>
+            <th>@Html.DisplayNameFor(model => model.Nome)</th>
+            <th>@Html.DisplayNameFor(model => model.RegistroTecnico)</th>
+            <th>@Html.DisplayNameFor(model => model.Especialidade)</th>
+            <th>Ações</th>
+        </tr></thead>
+        <tbody>
+        @foreach (var item in Model) {
+            <tr>
+                <td><strong>@Html.DisplayFor(modelItem => item.Nome)</strong></td>
+                <td>@Html.DisplayFor(modelItem => item.RegistroTecnico)</td>
+                <td>@Html.DisplayFor(modelItem => item.Especialidade)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Codigo">Editar</a>
+                    <a asp-action="Details" asp-route-id="@item.Codigo">Ver</a>
+                    <a asp-action="Delete" asp-route-id="@item.Codigo">Excluir</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

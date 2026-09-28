@@ -1,0 +1,74 @@
+@using System.Security.Claims
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] · appSatTech</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/appSatTech.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand brand" asp-controller="Home" asp-action="Index">
+                    <span class="brand-mark">ST</span>
+                    <span><strong>appSat</strong><b>Tech</b><small>Suporte inteligente</small></span>
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+                        aria-controls="mainNav" aria-expanded="false" aria-label="Abrir menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="mainNav">
+                    @if (User.Identity?.IsAuthenticated == true)
+                    {
+                        <ul class="navbar-nav mx-auto nav-pills-custom">
+                            <li class="nav-item"><a class="nav-link" asp-controller="Home" asp-action="Index">Início</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Cliente" asp-action="Index">Clientes</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Tecnico" asp-action="Index">Técnicos</a></li>
+                            <li class="nav-item"><a class="nav-link" asp-controller="Chamado" asp-action="Index">Chamados</a></li>
+                        </ul>
+
+                        <div class="user-menu">
+                            <div class="user-avatar">@((User.Identity?.Name ?? "U").Substring(0,1).ToUpper())</div>
+                            <div class="user-info">
+                                <span>Olá,</span>
+                                <strong>@User.Identity?.Name</strong>
+                            </div>
+                            <a class="logout-link" asp-controller="Account" asp-action="Logout" title="Sair">↪</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="ms-auto">
+                            <a class="btn btn-primary-custom btn-sm px-4" asp-controller="Account" asp-action="Login">Entrar no sistema</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            @RenderBody()
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+            <span>© 2026 <strong>appSatTech</strong> · Central de suporte técnico</span>
+            <a asp-controller="Home" asp-action="Privacy">Privacidade</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
