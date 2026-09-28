@@ -222,3 +222,6 @@ Achados da leitura do código, do mais grave ao menos grave.
 - As pastas `bin/`, `obj/` e `.vs/` não devem ir para o Git. Crie um `.gitignore`.
 
 **Pontos fortes:** o cliente do chamado vem da Session e não do formulário, o status é uma lista fechada, o layout está em pt-BR com identidade visual, e o código tem comentários explicando cada bloco.
+
+
+**Desenvolvido por João Victor Silva de Oliveira Melo**
