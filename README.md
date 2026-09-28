@@ -215,3 +215,6 @@ Achados da leitura do código, do mais grave ao menos grave.
 - As pastas `bin/`, `obj/` e `.vs/` não devem ir para o Git. Crie um `.gitignore`.
 
 **Pontos fortes:** o `Index` usa a claim do cookie (não um valor do formulário), o cookie expira em 30 minutos, e todas as ações POST têm `[ValidateAntiForgeryToken]` e `[Bind]` com lista explícita de campos.
+
+
+## Desevolvido por João Victor Silva de Oliveira Melo
